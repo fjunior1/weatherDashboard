@@ -1,0 +1,104 @@
+
+h1 {
+    color:black;
+}
+
+#maincontainer {
+    display:flex;
+    flex-direction: row;
+    flex: 1;
+   /* background-color: gray;*/
+
+}
+
+#cities {
+    flex-direction: column;
+    flex:1;
+    /*background-color: yellow;*/
+    justify-content: center;
+}
+
+#searchtitle {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#cityname {
+display: flex;
+flex:1;
+width: 90%;
+margin: 2px 0px;
+}
+
+#searchBtn{
+    text-align: center;
+    vertical-align: middle;
+    margin:auto;
+    padding:0px;
+    text-justify: center;
+    background-color:dodgerblue;
+    color: white;
+    padding: 7px 10px;
+}
+
+.solid {
+    width:90%;
+}
+#citylist {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: blueviolet;
+    flex: 1;
+}
+
+button {
+    display:flex;
+    border: none;
+    border-radius: 4px;
+    flex-direction: column;
+    width : 95%;
+    height: 30px;
+    font-size: 14px;
+    padding: 7px 10px ;
+    margin: 8px 3px;
+    color:black;
+    background-color: rgb(153, 150, 150);
+    /*font-weight:bold;*/
+}
+
+#cityList button:hover {
+    background-color: burlywood;
+}
+
+#weather {
+    flex-direction: column;
+    flex: 5;
+    /*background-color: green;*/
+
+}
+
+#data {
+    width: 100%; 
+    flex-wrap: wrap;
+    border: 2px black solid;
+}
+
+#data div {
+   margin-bottom: 10px;
+   font-size: 18px;
+   font-weight: bold;
+   padding-left: 3px;
+}
+
+#uvindexTxt {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-weight: normal;
+}
+
+#forecast {
+    width: 100%;
+}
