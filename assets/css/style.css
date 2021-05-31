@@ -14,7 +14,6 @@ h1 {
 #cities {
     flex-direction: column;
     flex:1;
-    /*background-color: yellow;*/
     justify-content: center;
 }
 
@@ -24,26 +23,27 @@ h1 {
 }
 
 #cityname {
-display: flex;
-flex:1;
-width: 90%;
-margin: 2px 0px;
+    display: flex;
+    flex:1;
+    size:5;
+    width: 98%;
+    padding: 0px 0px ;
+    margin: 0px 0px;
 }
 
 #searchBtn{
     text-align: center;
     vertical-align: middle;
-    margin:auto;
-    padding:0px;
     text-justify: center;
+    align-self: center;
     background-color:dodgerblue;
     color: white;
-    padding: 7px 10px;
 }
 
 .solid {
     width:90%;
 }
+
 #citylist {
     display: flex;
     justify-content: center;
@@ -57,7 +57,7 @@ button {
     border: none;
     border-radius: 4px;
     flex-direction: column;
-    width : 95%;
+    width : 98%;
     height: 30px;
     font-size: 14px;
     padding: 7px 10px ;
@@ -73,7 +73,7 @@ button {
 
 #weather {
     flex-direction: column;
-    flex: 5;
+    flex: 4;
     /*background-color: green;*/
 
 }
@@ -98,14 +98,50 @@ button {
     padding: 2px 10px;
     font-weight: normal;
 }
-
+ 
 #forecast {
     width: 100%;
 }
 
-@media only screen and (max-width: 700px) {
+#forecastdays{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    flex:1;
+}
+
+.fc {
+    display:flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 5px;
+    padding-left: 5px;
+    color:white;
+    font-size: 18px;
+    background-color: rgb(2, 2, 189);
+}
+
+.dateFcTxt{
+    font-size: 22px;
+    font-weight: bold;
+    padding-bottom: 4px;
+    padding-right: 15px;
+}
+
+.fcTxt {
+    margin-bottom: 10px;
+}
+
+.humFc{
+    width:50%;
+}
+
+@media only screen and (max-width: 720px) {
     #maincontainer{
         flex-direction: column;
-    
+    }
+
+    #forecastdays {
+        flex-direction: column;
     }
 }
