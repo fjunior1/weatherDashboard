@@ -4,62 +4,105 @@ Weather dashboard javascript functions
 
 let myKey = "25bdd42dbbe922a93923b851985199ef";
 let city;
-let cityList = ["orlando", "macon", "la vega", "samana"];
+let cityList = [];
 
 function init() {
     console.log("test test");
 }
 
+function addCityButton(name) {
+    let btn = $('<button>');
+    btn.addClass('cityBtn');
+    btn.text(name);
+
+    $('#cityBtnList').append(btn);
+}
+
 function getCitiesList() {
-    debugger;
-   let tmp = localStorage.getItem("cities");
-    if (tmp === undefined) {
-        return "";
+    let tmp = JSON.parse(localStorage.getItem("cities"));
+    if (tmp != null) {
+        cityList = tmp;
+
+        for (let i = 0; i < cityList.length; i++) {
+            addCityButton(cityList[i]);
+        }
     }
 
-    return tmp;
+   // return tmp;
 }
 
-cityList = getCitiesList();
+getCitiesList();
+
+$('#searchBtn').click(function (event) {
+    queryAPICityInfo($('#cityname').val());
+})
+
+$('.cityBtn').click(function (event) {
+    queryAPICityInfo(event.target.innerText);
+})
 
 function setCitiesList(cityList) {
-    debugger;
     localStorage.setItem('cities', JSON.stringify(cityList));
-
 }
 
-setCitiesList(cityList);
+function displayCityInfo(data) {
+    // update GUI with weather received
+    // display current weather information
+    //temp
+    $('#tempTxt').text(data.current.temp);
+    //wind
+    $('#windTxt').text(data.current.wind_speed);
+    //humidity
+    $('#humidTxt').text(data.current.humidity);
+    //uv index
+    $('#uvindexTxt').text(data.current.uvi);
 
+    // display 5 day forecast data
+    for (let i = 0; i < 5; i++) {
+        //date
+        $('#dateTxt' + (i + 1)).text(moment().add(1 + i, "days").format("L"));
+        //icon
 
-
-function updateCityInfo(temp, wind, humid, uv) {
-    $("#tempTxt").text("temp testJS");
-    $("#windTxt").text("wind testJS");
-    $("#humidTxt").text("humid testJS");
-    $("#uvindexTxt").text("UV testJS");
+        $('#fcimg' + (i + 1)).attr("src", "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png");
+        //temp
+        $('#tempTxt' + (i + 1)).text(data.daily[i].temp.day);
+        //wind
+        $('#windTxt' + (i + 1)).text(data.daily[i].wind_speed);
+        //humidity
+        $('#humidTxt' + (i + 1)).text(data.daily[i].humidity);
+    }
 }
 
-updateCityInfo("", "", "", "");
-
-function queryAPIInfo(city) {
-    debugger;
+function queryAPICityInfo(city) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="
         + city + "&appid=" + myKey;
-    
-    /*fetch(queryURL);*/
-    debugger;
-    fetch(queryURL)
-        .then(response => {
-            debugger;
-            response.json()
-        })
-        .then(data => {
-            debugger;
-            /* process returned object here */
 
-            console.log(data);
-            /* updateCityInfo()  */
+    fetch(queryURL)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            /* process returned object here */
+            let lat = data.coord.lat;
+            let lon = data.coord.lon;
+            let city = data.name;
+
+            // update city buttons, list and save list.
+            if (!cityList.includes(city)) {
+                cityList.push(city);
+                setCitiesList(cityList);
+                addCityButton(city);
+            }
+
+            //update city and date
+            $('#dateTxt').text(city + " " + moment().format("L"));
+
+            fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + myKey
+            ).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                displayCityInfo(data);
+            });
         });
 }
-
-/*queryAPIInfo("chicago"); */
