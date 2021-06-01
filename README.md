@@ -10,5 +10,5 @@ This website starts and the user selects or types a city
 to get weather and forecast info.  
 
 The application saves a list of the latest searched cities and  
-sets them in bottons in the search are to select.    
+sets them in buttons in the search are to select.    
 
