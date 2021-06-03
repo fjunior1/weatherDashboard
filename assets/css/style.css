@@ -12,7 +12,7 @@ h1 {
     flex-direction: column;
     flex:1;
     justify-content: center;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 #searchtitle {
@@ -24,8 +24,10 @@ h1 {
     display: flex;
     flex:1;
     size:5;
-    width: 100%;
-    padding: 0px 0px ;
+    color:darkgray;
+    width: 98%;
+    height: 30px;
+    padding: 0px 3px ;
     margin: 0px 0px;
 }
 
@@ -44,22 +46,31 @@ h1 {
 
 #cityBtnlist {
     display: flex;
-    justify-content: center;
+    
     text-align: center;
     background-color: blueviolet;
     flex: 1;
 }
+
+/*
+#cityBtnlist * {
+    width: 100%;
+    
+  }
+*/
 
 button {
     display:flex;
     border: none;
     border-radius: 4px;
     flex-direction: column;
-    width : 98%;
+    width : 100%;
+    justify-content: center;
+    align-items: center;
     height: 30px;
     font-size: 14px;
     padding: 7px 10px ;
-    margin: 8px 3px;
+    margin: 8px 0px;
     color:black;
     background-color: rgb(153, 150, 150);
 }
@@ -71,6 +82,7 @@ button {
 #weather {
     flex-direction: column;
     flex: 4;
+    margin-left: 15px;
 }
 
 #data {
@@ -124,7 +136,7 @@ button {
 }
 
 .fcTxt {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .humFc{

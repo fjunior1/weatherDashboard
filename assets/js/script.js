@@ -45,6 +45,23 @@ function setCitiesList(cityList) {
     localStorage.setItem('cities', JSON.stringify(cityList));
 }
 
+/* UV index ranges based on documentation: 
+https://www.epa.gov/sites/production/files/documents/uviguide.pdf
+*/
+function setUvIndex(uv) {
+    if (uv < 2 ) {
+        $("#uvindexTxt").css("background-color", "green");
+    } else if ((uv >= 2 ) && (uv <= 5 )) {
+        $("#uvindexTxt").css("background-color", "yellow");
+    } else if ((uv > 5 ) && (uv <=7 )) {
+        $("#uvindexTxt").css("background-color", "orange");
+    } else if ((uv > 7 ) && (uv <= 10 )) {
+        $("#uvindexTxt").css("background-color", "red");
+    } else {
+        $("#uvindexTxt").css("background-color", "purple");
+    }
+}
+
 function displayCityInfo(data) {
     // update GUI with weather received
     // display current weather information
@@ -57,6 +74,7 @@ function displayCityInfo(data) {
     //uv index
     $('#uvindexTxt').text(data.current.uvi);
 
+    setUvIndex(data.current.uvi);
     // display 5 day forecast data
     for (let i = 0; i < 5; i++) {
         //date
