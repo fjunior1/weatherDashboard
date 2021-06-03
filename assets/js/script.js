@@ -66,11 +66,14 @@ function displayCityInfo(data) {
     // update GUI with weather received
     // display current weather information
     //temp
-    $('#tempTxt').text(data.current.temp);
+    $('#tempTxt').text(data.current.temp + " °F");
+    //icon
+    data.current.weather[0].icon
+    $('#fcimgToday' ).attr("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png");
     //wind
-    $('#windTxt').text(data.current.wind_speed);
+    $('#windTxt').text(data.current.wind_speed + " mph");
     //humidity
-    $('#humidTxt').text(data.current.humidity);
+    $('#humidTxt').text(data.current.humidity + " %");
     //uv index
     $('#uvindexTxt').text(data.current.uvi);
 
@@ -83,11 +86,11 @@ function displayCityInfo(data) {
 
         $('#fcimg' + (i + 1)).attr("src", "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png");
         //temp
-        $('#tempTxt' + (i + 1)).text(data.daily[i].temp.day);
+        $('#tempTxt' + (i + 1)).text(data.daily[i].temp.day + " °F");
         //wind
-        $('#windTxt' + (i + 1)).text(data.daily[i].wind_speed);
+        $('#windTxt' + (i + 1)).text(data.daily[i].wind_speed + " mph");
         //humidity
-        $('#humidTxt' + (i + 1)).text(data.daily[i].humidity);
+        $('#humidTxt' + (i + 1)).text(data.daily[i].humidity + " %");
     }
 }
 
@@ -113,7 +116,7 @@ function queryAPICityInfo(city) {
             }
 
             //update city and date
-            $('#dateTxt').text(city + " " + moment().format("L"));
+            $('#dateTxt').text(city + " (" + moment().format("L") + ")");
 
             fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + myKey
             ).then(function (response) {

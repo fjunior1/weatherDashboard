@@ -1,3 +1,7 @@
+body {
+    background-color:ghostwhite;
+}
+
 h1 {
     color:black;
 }
@@ -52,13 +56,6 @@ h1 {
     flex: 1;
 }
 
-/*
-#cityBtnlist * {
-    width: 100%;
-    
-  }
-*/
-
 button {
     display:flex;
     border: none;
@@ -98,6 +95,16 @@ button {
    padding-left: 3px;
 }
 
+#dateTxt {
+    margin-bottom: 10px;
+    margin-top: 2px;
+}
+
+#todaydatediv {
+    display:flex;
+    flex-direction: row;
+}
+
 #uvindexTxt {
     background-color: green;
     color: white;
@@ -125,7 +132,7 @@ button {
     padding-left: 5px;
     color:white;
     font-size: 18px;
-    background-color: rgb(2, 2, 189);
+    background-color: rgb(51, 71, 90);
 }
 
 .dateFcTxt{
