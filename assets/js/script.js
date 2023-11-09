@@ -52,7 +52,7 @@ function setUvIndex(uv) {
     if (uv < 2 ) {
         $("#uvindexTxt").css("background-color", "green");
     } else if ((uv >= 2 ) && (uv <= 5 )) {
-        $("#uvindexTxt").css("background-color", "yellow");
+        $("#uvindexTxt").css("background-color", "gold");
     } else if ((uv > 5 ) && (uv <=7 )) {
         $("#uvindexTxt").css("background-color", "orange");
     } else if ((uv > 7 ) && (uv <= 10 )) {
